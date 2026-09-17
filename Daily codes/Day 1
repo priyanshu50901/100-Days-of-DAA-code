@@ -1,1 +1,28 @@
+//Day1:  
+Write a C program that accepts a positive integer containing digits from 0 to 9. Exactly one digit is missing, while the remaining nine digits appear exactly once. 
+Input : 854102967
+Output:  3
+
+#include <stdio.h>
+
+int main(void) {
+    long long n;
+    if (scanf("%lld", &n) != 1 || n < 0) {
+        return 1;
+    }
+
+    int expected_sum = 45; // 0 + 1 + 2 + ... + 9
+    int current_sum = 0;
+
+    long long temp = n;
+    while (temp > 0) {
+        current_sum += temp % 10;
+        temp /= 10;
+    }
+
+    int missing_digit = expected_sum - current_sum;
+    printf("%d\n", missing_digit);
+
+    return 0;
+}
 
